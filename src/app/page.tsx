@@ -4,6 +4,7 @@ import FeaturedProducts from "@/components/home/FeaturedProducts"
 import BrandShowcase from "@/components/home/BrandShowcase"
 import Collection from "@/components/home/Collections"
 import Testimonials from "@/components/home/Testimonial"
+import Newsletter from "@/components/home/Newsletter"
 
 export default function Home() {
   return (
@@ -45,6 +46,7 @@ export default function Home() {
       <BrandShowcase />
       <Collection />
       <Testimonials />
+      <Newsletter />
     </div>
   )
 }
