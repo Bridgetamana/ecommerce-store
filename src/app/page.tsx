@@ -1,5 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
+import FeaturedProducts from "@/components/home/FeaturedProducts"
+import BrandShowcase from "@/components/home/BrandShowcase"
 
 export default function Home() {
   return (
@@ -37,6 +39,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <FeaturedProducts />
+      <BrandShowcase />
     </div>
   )
 }
