@@ -2,6 +2,8 @@ import Link from "next/link"
 import Image from "next/image"
 import FeaturedProducts from "@/components/home/FeaturedProducts"
 import BrandShowcase from "@/components/home/BrandShowcase"
+import Collection from "@/components/home/Collections"
+import Testimonials from "@/components/home/Testimonial"
 
 export default function Home() {
   return (
@@ -41,6 +43,8 @@ export default function Home() {
       </section>
       <FeaturedProducts />
       <BrandShowcase />
+      <Collection />
+      <Testimonials />
     </div>
   )
 }
