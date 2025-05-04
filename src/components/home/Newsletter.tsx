@@ -24,7 +24,7 @@ export default function Newsletter() {
                     {isSubmitted ? (
                         <div className="mt-8 p-4 bg-slate-800 rounded-lg">
                             <p className="text-slate-200">
-                                Thank you for subscribing! We'll keep you updated with our latest collections and offers.
+                                Thank you for subscribing! We&apos;ll keep you updated with our latest collections and offers.
                             </p>
                         </div>
                     ) : (
