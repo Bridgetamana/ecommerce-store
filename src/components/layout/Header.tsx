@@ -4,6 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Menu, Search, ShoppingBag, User, X } from "lucide-react"
+import { useCart } from "../../context/cart-context"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -19,8 +20,11 @@ const navigation = [
 
 export default function Header() {
     const pathname = usePathname()
+    const { cart } = useCart()
     const [isSearchOpen, setIsSearchOpen] = useState(false)
+    
 
+    const cartItemsCount = cart.reduce((total, item) => total + item.quantity, 0);    
     return (
         <header className="relative bg-white z-10">
             <div className="border-b border-slate-200">
@@ -53,16 +57,16 @@ export default function Header() {
                                         </nav>
                                     </div>
                                     <div className="mt-auto border-t border-slate-200 px-4 py-6">
-
-                                        <div className="flex flex-col gap-3">
-                                            <Link href="/auth/login" className="btn-primary w-full justify-center">
-                                                Sign In
-                                            </Link>
-                                            <Link href="/auth/register" className="btn-outline w-full justify-center">
-                                                Create Account
-                                            </Link>
-                                        </div>
-
+                                        
+                                            <div className="flex flex-col gap-3">
+                                                <Link href="/auth/login" className="btn-primary w-full justify-center">
+                                                    Sign In
+                                                </Link>
+                                                <Link href="/auth/signup" className="btn-outline w-full justify-center">
+                                                    Create Account
+                                                </Link>
+                                            </div>
+                                    
                                     </div>
                                 </div>
                             </SheetContent>
@@ -103,23 +107,25 @@ export default function Header() {
                                 )}
                             </div>
 
-                            {/* Account */}
                             <div className="hidden md:block">
-
-                                <Link href="/auth/login">
-                                    <Button variant="ghost" size="icon">
-                                        <User className="h-5 w-5" />
-                                        <span className="sr-only">Sign in</span>
-                                    </Button>
-                                </Link>
-
+                                
+                                    <Link href="/auth/login">
+                                        <Button variant="ghost" size="icon">
+                                            <User className="h-5 w-5" />
+                                            <span className="sr-only">Sign in</span>
+                                        </Button>
+                                    </Link>
+                                
                             </div>
                             <Link href="/cart">
                                 <Button variant="ghost" size="icon" className="relative">
                                     <ShoppingBag className="h-5 w-5" />
                                     <span className="sr-only">Cart</span>
-                                    <Badge className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 bg-primary text-white">
-                                        0
+                                    <Badge
+                                        className={`absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 bg-primary text-white transition-opacity ${cartItemsCount > 0 ? 'opacity-100' : 'opacity-0'
+                                            }`}
+                                    >
+                                        {cartItemsCount}
                                     </Badge>
                                 </Button>
                             </Link>

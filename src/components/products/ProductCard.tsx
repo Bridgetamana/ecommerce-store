@@ -70,8 +70,6 @@ export default function ProductCard({ product }: { product: Product }) {
                     <span className="text-xs uppercase tracking-wide text-slate-500">{product.category}</span>
                 </div>
             </div>
-
-            {/* Always visible Add to Cart button */}
             <div className="mt-4">
                 <Button
                     onClick={handleAddToCart}
